@@ -17,10 +17,17 @@ class WelcomeTest {
 		assertEquals(Welcome.welcome("    "),"Hello, my friend");
 		assertEquals(Welcome.welcome(null),"Hello, my friend");
 	}
-	
+	 
 	@Test
-	void test3() {
+	void test3() { 
 		assertEquals(Welcome.welcome("JERRY"),"HELLO, JERRY!");
 	}
+	
+	@Test
+	void test4() {
+		assertEquals(Welcome.welcome("amy,bob"),"Hello, Amy, Bob");
+		assertEquals(Welcome.welcome("jon,bob"),"Hello, Jon, Bob");
+		assertNotEquals(Welcome.welcome("jon,bob"),"Hello, jon, bob");
+	} 
 
 }
