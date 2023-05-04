@@ -20,7 +20,7 @@ class WelcomeTest {
 	 
 	@Test
 	void test3() { 
-		assertEquals(Welcome.welcome("JERRY"),"HELLO, JERRY!");
+		assertEquals(Welcome.welcome("JERRY"),"HELLO, JERRY !");
 	}
 	
 	@Test
@@ -36,5 +36,13 @@ class WelcomeTest {
 		assertEquals(Welcome.welcome("amy,jon,bob"),"Hello, Amy, Jon, Bob");
 		assertNotEquals(Welcome.welcome("amy,jon,bob"),"Hello, amy, jon, bob");
 	}
+	
+	@Test
+	void test6() {
+		assertEquals(Welcome.welcome("amy,BOB,jerry"),"Hello, Amy, Jerry. AND HELLO, BOB !");
+		assertEquals(Welcome.welcome("amy,jerry"),"Hello, Amy, Jerry");
+		assertEquals(Welcome.welcome("BOB,jerry"),"Hello, Jerry. AND HELLO, BOB !");
+	}
+	
 
 }
