@@ -70,7 +70,7 @@ public class Welcome {
 	            index++;
 	        }
 	    }
-
+ 
 	    return namesUnique;
 	}
 	
@@ -101,7 +101,8 @@ public class Welcome {
 			}
 		}
 	    if (newCount > 0) {
-	        msg.append("Hello, ");
+	    	if(!yoda(lowercaseNames)) {
+	        msg.append("Hello, ");}
 	        for (int i = 0; i < newCount; i++) {
 	        	if((!"".equals(lowercaseNames[i]))) {
 		        		String name = formatName(lowercaseNames[i]);
@@ -124,6 +125,8 @@ public class Welcome {
 	        	}
 	        }
 	    }
+	    if(yoda(lowercaseNames)) {
+	        msg.append(", Hello");}
 	}
 
 	private static void appendUppercaseNames(StringBuilder msg, String[] uppercaseNames, int count) {
@@ -134,12 +137,16 @@ public class Welcome {
 			}
 		}
 	    if (newCount > 0) {
+	    	if(!yoda(uppercaseNames)) {
 	        if (msg.length() > 0) {
 	            msg.append(". ");
 	            msg.append("AND HELLO, ");
 	        } else {
 	            msg.append("HELLO, ");
-	        }
+	        }}
+	    	else if(yoda(uppercaseNames)) {
+	    		msg.append(". AND ");
+	    	}
 	        for (int i = 0; i < newCount; i++) {
 	        	if(!"".equals(uppercaseNames[i])) {
 	            String name = formatName(uppercaseNames[i]);
@@ -147,11 +154,23 @@ public class Welcome {
 	            if (i < newCount - 1) {
 	                msg.append(" AND ");
 	            } else {
+	            	if(yoda(uppercaseNames)) {
+	        	        msg.append(", HELLO");}
 	                msg.append("!");
 	            }
 	        }
 	        }
 	    }
+	    
+	}
+	
+	private static boolean yoda(String[] chaine) {
+		for(int i=0;i<chaine.length;i++) {
+			if (chaine[i].equals("yoda")||chaine[i].equals("YODA")) {
+				return true;
+			}
+		}
+		return false;
 	}
 
 	private static String formatName(String name) {
